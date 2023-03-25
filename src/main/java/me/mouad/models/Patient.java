@@ -23,6 +23,6 @@ public class Patient {
             cin,
             address,
             caseDescription;
-    private LocalDateTime scheduledAt, lastVisit;
+    //private LocalDateTime scheduledAt, lastVisit;
 
 }

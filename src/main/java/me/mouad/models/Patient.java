@@ -25,4 +25,9 @@ public class Patient {
             caseDescription;
     //private LocalDateTime scheduledAt, lastVisit;
 
+    public static boolean isValid(Patient patient) {
+        return patient.getFirstName() != null && !patient.getFirstName().isBlank()
+                && patient.getLastName() != null && !patient.getLastName().isBlank()
+                && patient.getCin() != null && !patient.getCin().isBlank();
+    }
 }

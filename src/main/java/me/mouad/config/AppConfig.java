@@ -32,11 +32,6 @@ public class AppConfig {
     }
 
     @Bean
-    public PatientFormView patientFormView(PatientRepository repository) {
-        return new PatientFormView(patientService(repository));
-    }
-
-    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);

@@ -5,7 +5,6 @@ import me.mouad.services.PatientService;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.function.Consumer;
 
@@ -18,7 +17,7 @@ public class PatientFormView extends JPanel {
     private final LabeledComponent<JTextField> caseDescription;
 
 
-    public PatientFormView(PatientService service) throws HeadlessException {
+    public PatientFormView() throws HeadlessException {
         this.firstName = LabeledComponent.create("First Name:",
                 new JTextField());
         this.lastName = LabeledComponent.create("Last Name:",

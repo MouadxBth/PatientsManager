@@ -4,9 +4,7 @@ import me.mouad.models.Patient;
 import me.mouad.services.PatientService;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 
 public class PatientsListView extends JPanel {
@@ -108,7 +106,7 @@ public class PatientsListView extends JPanel {
                     return;
                 }
 
-                final PatientFormView formView = new PatientFormView(service);
+                final PatientFormView formView = new PatientFormView();
                 formView.bind(result);
 
                 formView.build("Modify " + result.getFirstName() + " " + result.getLastName()

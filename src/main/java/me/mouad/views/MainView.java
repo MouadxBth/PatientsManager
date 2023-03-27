@@ -5,18 +5,18 @@ import me.mouad.services.PatientService;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 @Component
 public class MainView extends JFrame {
 
-    public MainView(PatientService patientService) throws HeadlessException {
+    private final PatientService patientService;
+    private JButton add, list;
 
+    public MainView(PatientService patientService) throws HeadlessException {
+        this.patientService = patientService;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 150);
+        setSize(400, 70);
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -24,10 +24,25 @@ public class MainView extends JFrame {
         final BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.X_AXIS);
         panel.setLayout(boxLayout);
 
-        final JButton add = new JButton("New Patient");
+        setupButtons();
+
+        helper.add(add);
+        helper.add(list);
+
+        panel.add(helper);
+
+        getContentPane().add(panel);
+
+    }
+
+    private void setupButtons() {
+        list = new JButton("List Patients");
+        list.addActionListener(event -> new PatientsListView(patientService).build());
+
+        add = new JButton("New Patient");
 
         add.addActionListener(action -> {
-            new PatientFormView(patientService).build("Add a new Patient", form -> {
+            new PatientFormView().build("Add a new Patient", form -> {
                 final Patient patient = form.getInput();
 
                 if (!Patient.isValid(patient)) {
@@ -69,21 +84,7 @@ public class MainView extends JFrame {
                     });
                 });
 
-
             });
         });
-
-        final JButton list = new JButton("List Patients");
-
-        list.addActionListener(event -> new PatientsListView(patientService).build());
-
-        helper.add(add);
-        helper.add(list);
-
-        panel.add(helper);
-
-        // pack();
-        getContentPane().add(panel);
-
     }
 }

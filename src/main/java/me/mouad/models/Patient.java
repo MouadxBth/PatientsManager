@@ -28,6 +28,7 @@ public class Patient {
     public static boolean isValid(Patient patient) {
         return patient.getFirstName() != null && !patient.getFirstName().isBlank()
                 && patient.getLastName() != null && !patient.getLastName().isBlank()
-                && patient.getCin() != null && !patient.getCin().isBlank();
+                && patient.getCin() != null && !patient.getCin().isBlank()
+                && patient.getCaseDescription() != null && !patient.getCaseDescription().isBlank();
     }
 }
